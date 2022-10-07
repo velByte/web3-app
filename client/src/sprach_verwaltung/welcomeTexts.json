@@ -10,5 +10,82 @@
     "en": "Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto.",
     "de": "Entdecken Sie die Krypto-Welt. Kaufen und verkaufen Sie Kryptowährungen einfach auf Krypto.",
     "bg": "Разгледайте крипто света. Лесно купувайте и продавайте криптовалути на Krypto."
+  },
+  "connect_wallet": {
+    "en": "Connect Wallet",
+    "de": "Wallet verbinden",
+    "bg": "Свържете портфейла"
+  },
+  "first_feature": {
+    "en": "Reliability",
+    "de": "Verlässlichkeit",
+    "bg": "Надеждност"
+  },
+  "first_feature_description": {
+    "en": "Krypto is a reliable platform for buying and selling cryptocurrencies. We are a team of professionals with years of experience in the crypto world.",
+    "de": "Krypto ist eine zuverlässige Plattform zum Kauf und Verkauf von Kryptowährungen. Wir sind ein Team von Profis mit jahrelanger Erfahrung in der Krypto-Welt.",
+    "bg": "Krypto е надеждна платформа за покупка и продажба на криптовалути. Ние сме екип от професионалисти с години опит в крипто света."
+  },
+  "second_feature": {
+    "en": "Security",
+    "de": "Sicherheit",
+    "bg": "Сигурност"
+  },
+  "second_feature_description": {
+    "en": "Krypto is a secure platform for buying and selling cryptocurrencies. We use the latest security technologies to protect your funds.",
+    "de": "Krypto ist eine sichere Plattform zum Kauf und Verkauf von Kryptowährungen. Wir verwenden die neuesten Sicherheitstechnologien, um Ihre Mittel zu schützen.",
+    "bg": "Krypto е сигурна платформа за покупка и продажба на криптовалути. Ние използваме най-новите технологии за защита на вашите средства."
+  },
+  "third_feature": {
+    "en": "Ethereum",
+    "de": "Ethereum",
+    "bg": "Ethereum"
+  },
+  "third_feature_description": {
+    "en": "Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.",
+    "de": "Ethereum ist eine dezentralisierte Plattform, die Smart Contracts ausführt: Anwendungen, die genau so ausgeführt werden, wie sie programmiert sind, ohne jegliche Möglichkeit von Ausfallzeiten, Zensur, Betrug oder Einmischung von Dritten.",
+    "bg": "Ethereum е децентрализирана платформа, която работи смарт контракти: приложения, които работят точно така, както са програмирани, без възможност за прекъсване, цензуриране, измама или вмешателство на трети страни."
+  },
+  "fourth_feature": {
+    "en": "Web 3.0",
+    "de": "Web 3.0",
+    "bg": "Web 3.0"
+  },
+  "fifth_feature": {
+    "en": "Low feas",
+    "de": "Niedrige Gebühren",
+    "bg": "Ниски такси"
+  },
+  "sixth_feature": {
+    "en": "Blockchain",
+    "de": "Blockchain",
+    "bg": "Blockchain"
+  },
+  "inputs_placeholder": {
+    "addressTo": {
+      "en": "Address to",
+      "de": "Adresse zu",
+      "bg": "Адрес до"
+    },
+    "amount": {
+      "en": "Amount (ETH)",
+      "de": "Menge (ETH)",
+      "bg": "Количество (ETH)"
+    },
+    "keyword": {
+      "en": "Keyword",
+      "de": "Stichwort",
+      "bg": "Ключова дума"
+    },
+    "enterMessage": {
+      "en": "Enter message",
+      "de": "Nachricht eingeben",
+      "bg": "Въведете съобщение"
+    }
+  },
+  "send_button": {
+    "en": "Send Now",
+    "de": "Senden Sie jetzt",
+    "bg": "Изпрати сега"
   }
 }
