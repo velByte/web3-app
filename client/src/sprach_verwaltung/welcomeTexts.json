@@ -1,0 +1,14 @@
+{
+  "main_title": {
+    "type": "text",
+    "analyzer": "standard",
+    "en": "Send Crypto across the world",
+    "de": "Senden Sie Krypto überall auf der Welt",
+    "bg": "Изпращане на крипто навсякъде в света"
+  },
+  "main_subtitle": {
+    "en": "Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto.",
+    "de": "Entdecken Sie die Krypto-Welt. Kaufen und verkaufen Sie Kryptowährungen einfach auf Krypto.",
+    "bg": "Разгледайте крипто света. Лесно купувайте и продавайте криптовалути на Krypto."
+  }
+}
