@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import { useState } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
@@ -5,6 +6,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import { Loader } from "./";
 import welcomeTexts from "../sprach_verwaltung/welcomeTexts.json";
 import languages from "../sprach_verwaltung/supported";
+import { TransactionContext } from "../context/TransactionContext";
 
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -21,16 +23,13 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 const Welcome = () => {
+  const { connectWallet } = useContext(TransactionContext);
   const userLanguage =
     window.navigator.userLanguage || window.navigator.language;
   const supportedLanguages = languages();
   const [language, setLanguage] = useState(
     supportedLanguages.includes(userLanguage) ? userLanguage : "en"
   );
-
-  const connectWallet = () => {
-    //TODO: connect wallet
-  };
 
   const handleSubmit = () => {
     //TODO: handle submit
