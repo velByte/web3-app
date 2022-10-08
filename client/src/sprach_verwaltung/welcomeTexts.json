@@ -16,6 +16,11 @@
     "de": "Wallet verbinden",
     "bg": "Свържете портфейла"
   },
+  "wallet_connected": {
+    "en": "Wallet Connected",
+    "de": "Wallet verbunden",
+    "bg": "Портфейлът е свързан"
+  },
   "first_feature": {
     "en": "Reliability",
     "de": "Verlässlichkeit",

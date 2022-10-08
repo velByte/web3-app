@@ -7,6 +7,7 @@ import { Loader } from "./";
 import welcomeTexts from "../sprach_verwaltung/welcomeTexts.json";
 import languages from "../sprach_verwaltung/supported";
 import { TransactionContext } from "../context/TransactionContext";
+import { ContextProvider } from "../context/ContextProvider";
 
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -23,7 +24,14 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 const Welcome = () => {
-  const { connectWallet } = useContext(TransactionContext);
+  const {
+    connectWallet,
+    currentAccount,
+    formData,
+    handleChange,
+    sendTransaction,
+    isLoading,
+  } = useContext(TransactionContext);
   const userLanguage =
     window.navigator.userLanguage || window.navigator.language;
   const supportedLanguages = languages();
@@ -31,8 +39,13 @@ const Welcome = () => {
     supportedLanguages.includes(userLanguage) ? userLanguage : "en"
   );
 
-  const handleSubmit = () => {
-    //TODO: handle submit
+  const handleSubmit = (e) => {
+    const { addressTo, amount, keyword, message } = formData;
+    e.preventDefault();
+    if (!addressTo || !amount || !keyword || !message) {
+      return alert("Please fill in all fields");
+    }
+    sendTransaction();
   };
 
   return (
@@ -46,15 +59,27 @@ const Welcome = () => {
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
             {welcomeTexts.main_subtitle[language]}
           </p>
-          <button
-            type="button"
-            onClick={connectWallet}
-            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
-          >
-            <p className="text-white text-base font-semibold">
-              {welcomeTexts.connect_wallet[language]}
-            </p>
-          </button>
+          {!currentAccount ? (
+            <button
+              type="button"
+              onClick={connectWallet}
+              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
+            >
+              <p className="text-white text-base font-semibold">
+                {welcomeTexts.connect_wallet[language]}
+              </p>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => console.log("TODO: handle submit")}
+              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
+            >
+              <p className="text-white text-base font-semibold">
+                {welcomeTexts.wallet_connected[language]}
+              </p>
+            </button>
+          )}
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             {
               //TODO: it breaks the layout by sm:grid-cols-3
@@ -104,19 +129,25 @@ const Welcome = () => {
               placeholder={welcomeTexts.inputs_placeholder.addressTo[language]}
               name="addressTo"
               type="text"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
+            {
+              //TODO: Add pattern for amount
+              //TODO: Add max button
+              //TODO: Add Valid Adress check
+            }
             <Input
               placeholder={welcomeTexts.inputs_placeholder.amount[language]}
               name="amount"
+              pattern="^[0-9]{1,2}([,.][0-9]{1,2})?$"
               type="number"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
             <Input
               placeholder={welcomeTexts.inputs_placeholder.keyword[language]}
               name="keyword"
               type="text"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
             <Input
               placeholder={
@@ -124,12 +155,12 @@ const Welcome = () => {
               }
               name="message"
               type="text"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
             <div className="h-[1px] w-full bg-gray-400 my-2" />
             {
               //TODO: add loader
-              false ? (
+              isLoading ? (
                 <Loader />
               ) : (
                 <button
