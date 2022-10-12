@@ -8,6 +8,7 @@ import welcomeTexts from "../sprach_verwaltung/welcomeTexts.json";
 import languages from "../sprach_verwaltung/supported";
 import { TransactionContext } from "../context/TransactionContext";
 import { ContextProvider } from "../context/ContextProvider";
+import { shortenAddress } from "../utils/shortenAddress";
 
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -24,6 +25,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 const Welcome = () => {
+  /* Destructuring the TransactionContext. */
   const {
     connectWallet,
     currentAccount,
@@ -32,13 +34,24 @@ const Welcome = () => {
     sendTransaction,
     isLoading,
   } = useContext(TransactionContext);
+
+  /* Getting the user's language. */
   const userLanguage =
     window.navigator.userLanguage || window.navigator.language;
+
+  /* Getting the supported languages from the languages.js file. */
   const supportedLanguages = languages();
+
+  /* Setting the language to the user's language if it is supported, otherwise it is setting it to
+ English. */
   const [language, setLanguage] = useState(
     supportedLanguages.includes(userLanguage) ? userLanguage : "en"
   );
 
+  /**
+   * If the addressTo, amount, keyword, or message fields are empty, then return an alert to the user.
+   * @returns The formData object is being returned.
+   */
   const handleSubmit = (e) => {
     const { addressTo, amount, keyword, message } = formData;
     e.preventDefault();
@@ -47,6 +60,8 @@ const Welcome = () => {
     }
     sendTransaction();
   };
+
+  const shortanAddress = shortenAddress(currentAccount);
 
   return (
     // This is centering the entire content in the middle of the screen
@@ -104,8 +119,11 @@ const Welcome = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col  flex-1 items-center justify-start w-full mf:mt-0 mt-10">
-          <div className="p-3  justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism ">
+        <div className=" flex flex-col  flex-1 items-center justify-start w-full mf:mt-0 mt-10">
+          <div
+            id="CreditCard"
+            className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism "
+          >
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">
                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
@@ -113,11 +131,10 @@ const Welcome = () => {
                 </div>
                 <BsInfoCircle fontSize={17} color="#fff" />
               </div>
-              <div>
+              <div className="">
                 <p className="text-white font-light text-sm">
-                  0xasdfsdf....sdffsdf
+                  {currentAccount ? shortanAddress : "Address"}
                 </p>
-
                 <p className="text-white font-semibold text-lg mt-1">
                   Ethereum
                 </p>
