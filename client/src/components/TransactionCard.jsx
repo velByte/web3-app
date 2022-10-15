@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import configData from "../../config.js";
 import { shortenAddress } from "../utils/shortenAddress";
+import useFetch from "../hooks/useFetch";
 
 const TransactionCard = (parameter) => {
-  const { id, url, message, timestamp, addressFrom, amount, addressTo } =
+  const { keyword, message, timestamp, addressFrom, amount, addressTo } =
     parameter;
+  const gifUrl = useFetch({ keyword });
   const etherscanLink = configData.etherscan.URL;
   const shortFromAddress = shortenAddress(addressFrom);
   const shortToAddress = shortenAddress(addressTo);
-
   return (
     <div
       className="bg-[#181918] m-4 flex flex-1
@@ -45,10 +46,14 @@ const TransactionCard = (parameter) => {
               <p className="text-white text-base">Message: {message}</p>
             </div>
           )}
-
-          <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
-            <p className="text-[#37c7da] font-bold">{timestamp}</p>
-          </div>
+        </div>
+        <img
+          src={gifUrl}
+          alt="gif"
+          className="w-full h-64 2x:h-96 rounded-md shadow-lg object-cover"
+        />
+        <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
+          <p className="text-[#37c7da] font-bold">{timestamp}</p>
         </div>
       </div>
     </div>
